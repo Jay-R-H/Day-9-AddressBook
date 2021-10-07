@@ -107,25 +107,26 @@ public class AddressBookMain {
 
 
     public static void main(String[] args) {
-        System.out.println("Welcome to address book program");
         System.out.println("Welcome to Address Book program ");
 
         AddressBookMain userDetails = new AddressBookMain();
+        userDetails.addDetails();
 
         while (true) {
             System.out.println("Choose what you want to do: ");
-            System.out.println("1.Add details.\n2.Edit details.\n3.Delete contact.");
+            System.out.println("1.Edit details.\n2.Delete contact.\n3.Add another person details");
             int choose = sc.nextInt();
             switch (choose) {
                 case 1:
-                    userDetails.addDetails();
-                    break;
-                case 2:
                     userDetails.editDetails();
                     break;
-                case 3:
+                case 2:
                     userDetails.deleteUser();
                     break;
+                case 3:
+                    userDetails.addDetails();
+                    break;
+
                 default:
                     System.out.println("Choose valid option");
                     break;
