@@ -86,26 +86,51 @@ public class AddressBookMain {
 
     }
 
+    public void deleteUser() {
+        System.out.println("Confirm your first name to delete contact");
+        String confirmName = sc.next();
+        for (int i = 0; i < arrayPersonDetails.size(); i++) {
+
+            if (arrayPersonDetails.get(i).getFirstName().equals(confirmName)) {
+
+                arrayPersonDetails.remove(i);
+            } else {
+                System.out.println("Enter valid first name");
+
+            }
+
+        }
+        System.out.println("User details deleted.");
+        System.out.println(arrayPersonDetails);
+
+    }
+
 
     public static void main(String[] args) {
         System.out.println("Welcome to address book program");
-        AddressBookMain final_details = new AddressBookMain();
+        System.out.println("Welcome to Address Book program ");
+
+        AddressBookMain userDetails = new AddressBookMain();
 
         while (true) {
             System.out.println("Choose what you want to do: ");
-            System.out.println("1.Add details.\n2.Edit details.");
+            System.out.println("1.Add details.\n2.Edit details.\n3.Delete contact.");
             int choose = sc.nextInt();
             switch (choose) {
                 case 1:
-                    final_details.addDetails();
+                    userDetails.addDetails();
                     break;
                 case 2:
-                    final_details.editDetails();
+                    userDetails.editDetails();
+                    break;
+                case 3:
+                    userDetails.deleteUser();
                     break;
                 default:
                     System.out.println("Choose valid option");
                     break;
             }
+
         }
 
     }
