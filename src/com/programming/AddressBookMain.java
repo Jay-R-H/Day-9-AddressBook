@@ -44,7 +44,7 @@ public class AddressBookMain {
 
         for (int i = 0; i < arrayPersonDetails.size(); i++) {
             if (arrayPersonDetails.get(i).getFirstName().equals(confirm_name)) {
-                System.out.println("Select form below to change: ");
+                System.out.println("Select options from below: ");
                 System.out.println(
                         "\n1.First Name\n2.Last Name\n3.Address\n4.city\n5.State\n6.Zip\n7.Mobile number\n8.Email");
                 int edit = sc.nextInt();
@@ -140,6 +140,7 @@ public class AddressBookMain {
                         System.out.println("Choose what you want to do: ");
                         System.out.println("1.Add details.\n2.Edit details.\n3.Delete contact.\n4.Exit");
                         int choose1 = sc.nextInt();
+
                         if (choose1 == 4) {
                             System.out.println("Exited");
                             break;
@@ -147,6 +148,13 @@ public class AddressBookMain {
                         switch (choose1) {
                             case 1:
                                 userDetails.addDetails();
+                                for (int i = 0; i < arrayPersonDetails.size(); i++) {
+                                    if (arrayPersonDetails.contains(arrayPersonDetails.get(i).getFirstName())) {
+                                        System.out.println("User with field already exists, enter different detail");
+                                    } else {
+                                        userDetails.addDetails();
+                                    }
+                                }
                                 break;
                             case 2:
                                 userDetails.editDetails();
@@ -215,7 +223,9 @@ public class AddressBookMain {
 
     }
 
+
     public static void main(String[] args) {
+
         System.out.println("Welcome to Address Book program ");
         userDetails.createAddressBook();
 
@@ -223,72 +233,4 @@ public class AddressBookMain {
 
 }
 
-class ContactInfo {
-    private String firstName, lastName, address, city, state, email;
-    private long zip, phoneNumber;
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public long getZip() {
-        return zip;
-    }
-
-    public void setZip(long zip) {
-        this.zip = zip;
-    }
-
-    public long getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-}
